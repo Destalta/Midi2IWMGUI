@@ -1,4 +1,4 @@
-﻿using NAudio.Midi;
+using NAudio.Midi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,13 +114,13 @@ namespace Midi2IWMGUI
                         var pitch = pitchTable[pitchIndex];
                         ac.CreateTag(xml, "param", "key", "pitch", "val", pitch.ToString());
                         var sfx = (string)config["sfx"];
-                        ac.CreateTag(xml, "param", "key", "sound", "val", GetSFXIndex(sfx));
+                        ac.CreateTag(xml, "param", "key", "sound", "val", GetSFXIndex(sfx)); 
 
                         ac.CreateTag(xml, "event", "eventIndex", "103");
 
                         // Trigger
                         obj.CreateTag(xml, "param", "key", "trigger_once", "val", "1");
-                        obj.CreateTag(xml, "param", "key", "trigger_number", "val", "0");
+                        obj.CreateTag(xml, "param", "key", "trigger_number", "val", "999");
                         obj.CreateTag(xml, "param", "key", "scale", "val", "1");
                         obj.CreateTag(xml, "param", "key", "visible", "val", "0");
                     }
@@ -194,7 +194,7 @@ namespace Midi2IWMGUI
             foreach (var i in tracksConfig)
             {
                 i["convert"] = true;
-                i["sfx"] = "Duck";
+                i["sfx"] = "Piano";
             }
         }
 
@@ -277,23 +277,45 @@ namespace Midi2IWMGUI
             switch (name)
             {
                 case "Duck": return "0";
+                case "Glass Break": return "1";
                 case "Bubble": return "2";
-                case "Switch": return "3";
-                case "Ring": return "4";
-                case "Attention": return "5";
+                case "Light Switch": return "3";
+                case "Ring Bell": return "4";
+                case "Exclamation": return "5";
                 case "Spring": return "6";
-                case "Mike": return "7";
+                case "Horn": return "7";
                 case "OK": return "8";
-                case "Break": return "9";
+                case "Glass Break 2": return "9";
                 case "Punch": return "10";
-                case "Gun": return "11";
-                case "Magic": return "12";
+                case "Laser Gun": return "11";
+                case "Woosh": return "12";
                 case "Whistle": return "13";
-                case "Button": return "14";
+                case "Magic": return "14";
                 case "Ninja": return "15";
-                case "Hand": return "16";
-                case "Drum": return "17";
-                default: return "0";
+                case "Clapping": return "16";
+                case "Drum Roll": return "17";
+                case "Piano": return "18";
+                case "Bass": return "19";
+                case "Party Noisemaker": return "20";
+                case "Hoot": return "21";
+                case "Laughter": return "22";
+                case "Suspense": return "23";
+                case "Wood Scraper": return "24";
+                case "Drum": return "25";
+                case "No-no": return "26";
+                case "Glass Bottle": return "27";
+                case "Woodimba": return "28";
+                case "Metallic Hit": return "29";
+                case "Gun": return "30";
+                case "Electric Charge": return "31";
+                case "Laser Blast (Foam Icon)": return "32";
+                case "Heartbeat": return "33";
+                case "Rubber Chicken": return "34";
+                case "Dog Bark": return "35";
+                case "Cat Meow": return "36";
+                case "Toll Bell": return "37";
+                case "Robot": return "38";
+                default: return "18";
             }
         }
     }
